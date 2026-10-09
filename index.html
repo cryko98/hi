@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Holy Inu ($HI) — Sent From Heaven to Bless the Chain</title>
+  <meta name="description" content="Holy Inu ($HI) — a little shiba sent down from the clouds to bless the degens of Solana. Fair launched on pump.fun." />
+  <meta name="theme-color" content="#7fb6e8" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta property="og:title" content="Holy Inu ($HI)" />
+  <meta property="og:description" content="Sent from heaven to bless the chain. Say $HI." />
+  <meta property="og:image" content="holy-inu.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky-top: #4f8fd6;
+      --sky-mid: #8cc0ee;
+      --sky-low: #dcecfb;
+      --gold: #ffd84d;
+      --gold-deep: #e8a90c;
+      --gold-glow: rgba(255, 216, 77, .55);
+      --fur: #d9944a;
+      --ink: #1d2a44;
+      --ink-soft: #4a5a7a;
+      --cloud: #ffffff;
+      --card: rgba(255, 255, 255, .72);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Nunito", system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 35%, var(--sky-low) 75%, #fff8e4 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* ---------- floating clouds ---------- */
+    .clouds { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .cloud {
+      position: absolute; background: var(--cloud); border-radius: 999px; opacity: .75;
+      filter: blur(2px); animation: drift linear infinite;
+    }
+    .cloud::before, .cloud::after { content: ""; position: absolute; background: inherit; border-radius: 50%; }
+    .cloud::before { width: 55%; height: 160%; left: 15%; bottom: 20%; }
+    .cloud::after  { width: 40%; height: 130%; right: 12%; bottom: 25%; }
+    @keyframes drift { from { transform: translateX(-30vw); } to { transform: translateX(130vw); } }
+
+    /* ---------- nav ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px clamp(16px, 4vw, 48px);
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, .35);
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand img { width: 42px; height: 42px; border-radius: 50%; box-shadow: 0 0 0 3px var(--gold), 0 0 18px var(--gold-glow); }
+    .brand span { font-family: "Cinzel", serif; font-weight: 900; font-size: 1.25rem; letter-spacing: .04em; }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 800; color: var(--ink); opacity: .85; }
+    .nav-links a:hover { opacity: 1; }
+    @media (max-width: 720px) { .nav-links a:not(.btn) { display: none; } }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 26px; border-radius: 999px; font-weight: 900; text-decoration: none;
+      font-size: 1rem; letter-spacing: .02em; cursor: pointer; border: 0;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px) scale(1.03); }
+    .btn-gold {
+      background: linear-gradient(180deg, #fff1a6, var(--gold) 45%, var(--gold-deep));
+      color: #3b2600; box-shadow: 0 6px 0 #b9800a, 0 10px 30px var(--gold-glow);
+    }
+    .btn-gold:active { transform: translateY(3px); box-shadow: 0 3px 0 #b9800a; }
+    .btn-ghost { background: rgba(255, 255, 255, .8); color: var(--ink); box-shadow: 0 6px 0 rgba(29, 42, 68, .15); }
+    nav .btn { padding: 10px 20px; font-size: .9rem; }
+
+    main { position: relative; z-index: 1; }
+    section { padding: clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px); }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    /* ---------- hero ---------- */
+    .hero { text-align: center; padding-top: clamp(40px, 7vw, 80px); }
+    .halo-img { position: relative; width: min(380px, 78vw); margin: 0 auto 34px; animation: float 5s ease-in-out infinite; }
+    .halo-img img { border-radius: 50%; aspect-ratio: 1; object-fit: cover; border: 6px solid #fff; box-shadow: 0 0 0 4px var(--gold), 0 0 60px 10px var(--gold-glow), 0 30px 60px rgba(29, 42, 68, .25); }
+    .halo-img::before {
+      content: ""; position: absolute; inset: -18%; border-radius: 50%; z-index: -1;
+      background: conic-gradient(from 0deg, transparent 0 8%, rgba(255, 236, 150, .55) 10%, transparent 13% 22%, rgba(255, 236, 150, .45) 25%, transparent 28% 38%, rgba(255, 236, 150, .55) 41%, transparent 44% 55%, rgba(255, 236, 150, .45) 58%, transparent 61% 72%, rgba(255, 236, 150, .55) 75%, transparent 78% 88%, rgba(255, 236, 150, .45) 91%, transparent 94%);
+      animation: spin 30s linear infinite;
+      mask: radial-gradient(circle, #000 35%, transparent 70%);
+      -webkit-mask: radial-gradient(circle, #000 35%, transparent 70%);
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .eyebrow { display: inline-block; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; font-size: .8rem; background: rgba(255, 255, 255, .7); padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+    h1 {
+      font-family: "Cinzel", serif; font-weight: 900; line-height: 1;
+      font-size: clamp(3rem, 11vw, 7.5rem); color: #fff;
+      text-shadow: 0 4px 0 var(--gold-deep), 0 0 40px var(--gold-glow), 0 12px 30px rgba(29, 42, 68, .35);
+    }
+    .ticker { font-family: "Cinzel", serif; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2.2rem); color: var(--ink); margin-top: 10px; }
+    .ticker b { color: var(--gold-deep); }
+    .hero p.lead { max-width: 640px; margin: 18px auto 34px; font-size: clamp(1.05rem, 2.4vw, 1.3rem); font-weight: 600; color: var(--ink-soft); }
+    .cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ---------- marquee ---------- */
+    .marquee { position: relative; z-index: 1; overflow: hidden; background: var(--ink); color: var(--gold); transform: rotate(-1.5deg); margin: 10px -10px; box-shadow: 0 10px 30px rgba(29, 42, 68, .25); }
+    .marquee-track { display: flex; width: max-content; animation: scroll 30s linear infinite; }
+    .marquee span { font-family: "Cinzel", serif; font-weight: 900; font-size: 1.3rem; padding: 14px 24px; white-space: nowrap; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ---------- headings ---------- */
+    .section-title { text-align: center; margin-bottom: 48px; }
+    .section-title small { display: block; font-weight: 900; letter-spacing: .25em; text-transform: uppercase; color: var(--gold-deep); font-size: .8rem; margin-bottom: 8px; }
+    h2 { font-family: "Cinzel", serif; font-weight: 900; font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.1; }
+
+    /* ---------- story ---------- */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    @media (max-width: 860px) { .story-grid { grid-template-columns: 1fr; } }
+    .scroll-card {
+      background: linear-gradient(180deg, #fffdf4, #fff6da);
+      border-radius: 28px; padding: clamp(24px, 4vw, 44px);
+      box-shadow: 0 0 0 2px rgba(232, 169, 12, .35), 0 25px 60px rgba(29, 42, 68, .18);
+    }
+    .scroll-card h3 { font-family: "Cinzel", serif; font-size: 1.4rem; margin-bottom: 4px; }
+    .scroll-card .verse { font-size: .78rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 14px; }
+    .scroll-card p { margin-bottom: 14px; color: #3a4560; font-size: 1.05rem; }
+    .scroll-card p:last-child { margin-bottom: 0; }
+    .chapters { display: grid; gap: 20px; }
+    .chapter { background: var(--card); backdrop-filter: blur(8px); border-radius: 22px; padding: 22px 24px; border: 1px solid rgba(255, 255, 255, .9); box-shadow: 0 12px 30px rgba(29, 42, 68, .1); }
+    .chapter h4 { font-family: "Cinzel", serif; font-size: 1.15rem; margin-bottom: 6px; display: flex; gap: 10px; align-items: center; }
+    .chapter h4 i { font-style: normal; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #3b2600; font-size: .95rem; font-family: "Nunito"; font-weight: 900; flex: none; }
+    .chapter p { color: var(--ink-soft); }
+
+    /* ---------- commandments ---------- */
+    .commandments { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .cmd { position: relative; background: var(--card); backdrop-filter: blur(8px); border-radius: 24px; padding: 28px 24px 24px; border: 1px solid rgba(255, 255, 255, .9); box-shadow: 0 12px 30px rgba(29, 42, 68, .1); transition: transform .2s ease; }
+    .cmd:hover { transform: translateY(-6px) rotate(-.5deg); }
+    .cmd .num { font-family: "Cinzel", serif; font-weight: 900; font-size: 2.6rem; color: var(--gold); -webkit-text-stroke: 1.5px var(--gold-deep); line-height: 1; }
+    .cmd h4 { font-weight: 900; font-size: 1.15rem; margin: 10px 0 6px; }
+    .cmd p { color: var(--ink-soft); font-size: .98rem; }
+
+    /* ---------- tokenomics ---------- */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .stat { text-align: center; background: linear-gradient(180deg, #fff, #fff6d6); border-radius: 26px; padding: 30px 20px; box-shadow: 0 0 0 2px rgba(232, 169, 12, .3), 0 18px 40px rgba(29, 42, 68, .12); }
+    .stat .big { font-family: "Cinzel", serif; font-weight: 900; font-size: clamp(1.7rem, 4vw, 2.3rem); color: var(--ink); }
+    .stat .lbl { font-weight: 800; color: var(--gold-deep); text-transform: uppercase; letter-spacing: .15em; font-size: .78rem; margin-top: 6px; }
+    .note { text-align: center; margin-top: 28px; color: var(--ink-soft); font-weight: 700; }
+
+    /* ---------- how to buy ---------- */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; counter-reset: step; }
+    .step { background: var(--card); backdrop-filter: blur(8px); border-radius: 24px; padding: 26px 24px; border: 1px solid rgba(255, 255, 255, .9); box-shadow: 0 12px 30px rgba(29, 42, 68, .1); }
+    .step::before { counter-increment: step; content: "Step " counter(step); display: inline-block; font-weight: 900; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; background: var(--ink); color: var(--gold); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+    .step h4 { font-weight: 900; font-size: 1.2rem; margin-bottom: 6px; }
+    .step p { color: var(--ink-soft); }
+    .buy-cta { text-align: center; margin-top: 44px; }
+
+    /* ---------- prayer / final ---------- */
+    .prayer { text-align: center; }
+    .prayer .box { max-width: 760px; margin: 0 auto; background: var(--ink); color: #f5f1e4; border-radius: 32px; padding: clamp(32px, 6vw, 60px); box-shadow: 0 0 0 4px var(--gold), 0 0 80px var(--gold-glow); position: relative; overflow: hidden; }
+    .prayer .box::before { content: ""; position: absolute; width: 260px; height: 70px; border: 8px solid var(--gold); border-radius: 50%; top: -38px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 30px var(--gold-glow), inset 0 0 20px var(--gold-glow); }
+    .prayer h2 { color: var(--gold); margin-bottom: 18px; }
+    .prayer p { font-size: 1.15rem; font-style: italic; opacity: .92; }
+    .prayer .amen { font-family: "Cinzel", serif; font-weight: 900; font-style: normal; color: var(--gold); margin-top: 18px; font-size: 1.4rem; }
+
+    footer { position: relative; z-index: 1; text-align: center; padding: 40px 16px 50px; color: var(--ink-soft); font-size: .85rem; }
+    footer .brand { justify-content: center; margin-bottom: 14px; }
+    footer p { max-width: 720px; margin: 0 auto; }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* halo cursor sparkle */
+    .spark { position: fixed; pointer-events: none; z-index: 50; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: fade 900ms ease-out forwards; }
+    @keyframes fade { to { opacity: 0; transform: translateY(-30px) scale(.2); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="clouds" aria-hidden="true" id="clouds"></div>
+
+  <nav>
+    <a class="brand" href="#top"><img src="holy-inu.jpg" alt="Holy Inu logo" /><span>Holy Inu</span></a>
+    <div class="nav-links">
+      <a href="#story">Story</a>
+      <a href="#commandments">Commandments</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#buy">How to Buy</a>
+      <a class="btn btn-gold" href="https://pump.fun" target="_blank" rel="noopener">Buy $HI</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="halo-img"><img src="holy-inu.jpg" alt="Holy Inu — a shiba puppy with a golden halo floating in the clouds" /></div>
+        <span class="eyebrow">☁️ A good boy from above ☁️</span>
+        <h1>Holy Inu</h1>
+        <div class="ticker">Say <b>$HI</b> to heaven's goodest boy</div>
+        <p class="lead">He was too pure for heaven's waiting list, so he wagged his way down to Solana. One tiny shiba. One golden halo. One mission: bless every bag on the chain.</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="https://pump.fun" target="_blank" rel="noopener">✨ Buy on pump.fun</a>
+          <a class="btn btn-ghost" href="#story">Read the Gospel</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>SAY $HI ✦</span><span>HOLY INU ✦</span><span>BLESSED BAGS ✦</span><span>HALO ON ✦</span><span>SENT FROM HEAVEN ✦</span><span>GOOD BOY ONLY ✦</span>
+        <span>SAY $HI ✦</span><span>HOLY INU ✦</span><span>BLESSED BAGS ✦</span><span>HALO ON ✦</span><span>SENT FROM HEAVEN ✦</span><span>GOOD BOY ONLY ✦</span>
+      </div>
+    </div>
+
+    <!-- STORY -->
+    <section id="story">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <small>The Gospel of $HI</small>
+          <h2>How a Puppy Got His Halo</h2>
+        </div>
+        <div class="story-grid">
+          <div class="scroll-card reveal">
+            <h3>In the Beginning…</h3>
+            <div class="verse">Book of Woof · 1:1</div>
+            <p>High above the clouds, past the gates where the good boys go, there lived a tiny shiba with paws too big for his body and a heart too big for the sky. The angels called him <b>Inu</b>. He never once chewed a slipper. He never barked at the mailman. He was, by every heavenly measure, the goodest boy who had ever lived.</p>
+            <p>So one sunny morning, the clouds parted and a golden halo floated down and settled right above his fluffy ears. It hummed. It glowed. It fit perfectly.</p>
+            <p>But Inu wasn't interested in floating around on clouds all day. Every time he peeked over the edge, he saw them: the degens of Solana. Rugged. Dumped on. Staring at red candles at 3 AM. Crying into their cold coffee.</p>
+            <p>Inu tilted his head. He knew exactly what they needed.</p>
+            <p><b>So he jumped.</b></p>
+          </div>
+          <div class="chapters">
+            <div class="chapter reveal">
+              <h4><i>I</i> The Descent</h4>
+              <p>Holy Inu tumbled through a hundred clouds and landed — paws first — right on the Solana chain. The halo stayed on. It always stays on.</p>
+            </div>
+            <div class="chapter reveal">
+              <h4><i>II</i> The First Blessing</h4>
+              <p>He found a degen who'd been rugged six times that week. Inu sat down next to him and simply said <b>"hi."</b> The degen's portfolio didn't change — but his spirit did. That was the first $HI.</p>
+            </div>
+            <div class="chapter reveal">
+              <h4><i>III</i> The Fair Launch</h4>
+              <p>No VCs in the clouds. No presale behind the pearly gates. Holy Inu came down the way every honest pup should: a fair launch on <b>pump.fun</b>, open to every soul at once.</p>
+            </div>
+            <div class="chapter reveal">
+              <h4><i>IV</i> The Congregation</h4>
+              <p>Now the faithful gather. They change their pfps, they light up their halos, and every morning they greet each other the only way that matters: <b>Say $HI.</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMANDMENTS -->
+    <section id="commandments">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <small>Carved on a Dog Biscuit</small>
+          <h2>The Holy Commandments</h2>
+        </div>
+        <div class="commandments">
+          <div class="cmd reveal"><div class="num">I</div><h4>Thou Shalt Say $HI</h4><p>Every gm, every gn, every chart check. A greeting is a blessing.</p></div>
+          <div class="cmd reveal"><div class="num">II</div><h4>Thou Shalt Not Paper Hand</h4><p>The halo does not slip for a little red candle. Neither should you.</p></div>
+          <div class="cmd reveal"><div class="num">III</div><h4>Honor the Good Boy</h4><p>Pets, treats and belly rubs are tithes. Holy Inu accepts all three.</p></div>
+          <div class="cmd reveal"><div class="num">IV</div><h4>Keep the Halo On</h4><p>Wear it on your pfp. Wear it in your heart. Wear it at the top.</p></div>
+          <div class="cmd reveal"><div class="num">V</div><h4>Spread the Good Word</h4><p>Leave no degen un-blessed. Every new holder is a soul saved from the trenches.</p></div>
+          <div class="cmd reveal"><div class="num">VI</div><h4>Fear No FUD</h4><p>Though you walk through the valley of the dip, Holy Inu walks beside you.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section id="tokenomics">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <small>Heavenly Numbers</small>
+          <h2>Tokenomics</h2>
+        </div>
+        <div class="stats">
+          <div class="stat reveal"><div class="big">$HI</div><div class="lbl">Ticker</div></div>
+          <div class="stat reveal"><div class="big">1,000,000,000</div><div class="lbl">Total Supply</div></div>
+          <div class="stat reveal"><div class="big">0%</div><div class="lbl">Buy / Sell Tax</div></div>
+          <div class="stat reveal"><div class="big">Solana</div><div class="lbl">Chain</div></div>
+        </div>
+        <p class="note reveal">Fair launched on pump.fun · No presale · No VC allocation · 100% community blessed</p>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="buy">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <small>Join the Congregation</small>
+          <h2>How to Buy $HI</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><h4>Get a Wallet</h4><p>Download Phantom or Solflare from the official app store or browser extension site and create your wallet.</p></div>
+          <div class="step reveal"><h4>Load Up on SOL</h4><p>Buy SOL on an exchange or directly in your wallet, then make sure it's sitting in your Solana wallet.</p></div>
+          <div class="step reveal"><h4>Go to pump.fun</h4><p>Head to pump.fun, connect your wallet and search for <b>Holy Inu ($HI)</b>.</p></div>
+          <div class="step reveal"><h4>Swap & Get Blessed</h4><p>Enter how much SOL you want to swap, confirm, and welcome your halo. You are now a holder of $HI.</p></div>
+        </div>
+        <div class="buy-cta reveal">
+          <a class="btn btn-gold" href="https://pump.fun" target="_blank" rel="noopener">✨ Buy $HI on pump.fun</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRAYER -->
+    <section class="prayer">
+      <div class="box reveal">
+        <h2>The Holder's Prayer</h2>
+        <p>Our Inu, who art in the clouds,<br/>hallowed be thy halo.<br/>Thy pump come, thy chart be green,<br/>on Solana as it is in heaven.<br/>Give us this day our daily candle,<br/>and forgive us our paper hands,<br/>as we forgive those who sold the bottom.<br/>Lead us not into rugs,<br/>but deliver us from FUD.</p>
+        <p class="amen">Say $HI. Amen. 🐾</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top"><img src="holy-inu.jpg" alt="" /><span>Holy Inu</span></a>
+    <p>$HI is a memecoin with no intrinsic value or expectation of financial return. It is made for fun and community, not investment advice. Crypto is volatile — only spend what you can afford to lose. Always do your own research.</p>
+    <p style="margin-top:12px">© 2026 Holy Inu. Sent from heaven with love.</p>
+  </footer>
+
+  <script>
+    // drifting clouds
+    (function () {
+      const box = document.getElementById("clouds");
+      const n = window.innerWidth < 700 ? 6 : 10;
+      for (let i = 0; i < n; i++) {
+        const c = document.createElement("div");
+        c.className = "cloud";
+        const w = 120 + Math.random() * 220;
+        c.style.width = w + "px";
+        c.style.height = w * 0.32 + "px";
+        c.style.top = Math.random() * 95 + "%";
+        c.style.animationDuration = 60 + Math.random() * 80 + "s";
+        c.style.animationDelay = -Math.random() * 140 + "s";
+        c.style.opacity = 0.35 + Math.random() * 0.45;
+        box.appendChild(c);
+      }
+    })();
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    // golden sparkles on pointer move (desktop only)
+    if (matchMedia("(pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      let last = 0;
+      window.addEventListener("pointermove", (e) => {
+        const now = performance.now();
+        if (now - last < 45) return;
+        last = now;
+        const s = document.createElement("div");
+        s.className = "spark";
+        s.style.left = e.clientX - 4 + "px";
+        s.style.top = e.clientY - 4 + "px";
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 900);
+      });
+    }
+  </script>
+</body>
+</html>
